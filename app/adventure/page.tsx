@@ -456,7 +456,7 @@ export default function AdventurePage() {
                 type="button"
                 onClick={handleAskGuide}
                 disabled={guideStatus === 'loading'}
-                className="mt-3 inline-flex min-h-[48px] items-center rounded-full bg-brass-500 px-6 font-bold text-white hover:bg-brass-400 disabled:opacity-60"
+                className="mt-3 inline-flex min-h-[48px] items-center rounded-full bg-brass-700 px-6 font-bold text-white hover:bg-brass-800 disabled:opacity-60"
               >
                 {guideStatus === 'loading' ? 'Thinking...' : 'Ask WonderGuide'}
               </button>

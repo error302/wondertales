@@ -125,7 +125,7 @@ export default function GrownUpsPage() {
                 {(['6-8', '9-12'] as const).map((band) => (
                   <label
                     key={band}
-                    className={`inline-flex min-h-[48px] flex-1 cursor-pointer items-center justify-center rounded-2xl border-2 px-4 font-bold ${
+                    className={`inline-flex min-h-[48px] flex-1 cursor-pointer items-center justify-center rounded-2xl border-2 px-4 font-bold focus-within:outline-none focus-within:ring-4 focus-within:ring-pond-700 ${
                       bandDraft === band
                         ? 'border-garden-700 bg-garden-700 text-white'
                         : 'border-garden-200 text-garden-800'

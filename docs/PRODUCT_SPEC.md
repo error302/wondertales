@@ -18,9 +18,11 @@ localization means translating typed records, not rewriting UI.
 3. **Guide select** (`/companions`): pick Milo or Nia as your traveling guide.
    Shown in the adventure progress bar and celebration; stored on-device.
 4. **Story player** (`/adventure`): scene illustration and title, dialogue with
-   Milo/Nia, 3 meaningful choices per puzzle, kind feedback, progress bar with
+   Milo/Nia, read-aloud Listen/Stop per line (browser speech, no network),
+   3 meaningful choices per puzzle, kind feedback, progress bar with
    guide chip, opt-in WonderGuide preview panel, celebration recap. Large touch
-   targets (min 48px), skip link, focus ring, reduced-motion respected.
+   targets (min 48px), skip link, visible focus, AA contrast, reduced-motion
+   respected, fully keyboard playable.
 5. **Celebration**: what was learned per concept (first-try vs learned-with-help
    reported separately), puzzles solved, tries, achievements, replay, next step.
 6. **Grown-ups dashboard** (`/grown-ups`): child profile (name, age band),

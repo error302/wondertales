@@ -20,6 +20,7 @@ progression, or world state.
 | M2 — Playable (Nov 5) | Full s1–s6 story wiring, all 4 questions, s4 remediation loop, on-device persistence, responsive + story-path e2e | Done |
 | M2.1 — Universe (Nov 5) | World select, guide select, grown-ups dashboard, journey e2e | Done |
 | M4-mock — Guide API (Nov 5) | Server-side WonderGuide demo endpoint: allowlist validation, daily cap, honest mock label | Done |
+| M5 — Readiness (Nov 5) | Read-aloud narration, WCAG contrast/keyboard pass, CI gates on push | Done |
 | M3 — Visual polish (Nov 1) | Character bible, water animation, garden transformations, a11y pass | Planned |
 | M4 — WonderGuide (Nov 2) | Mock + Meta server provider, validation, fallbacks, toggle, rate limits | Planned |
 | M5 — Release candidate (Nov 3) | Deployment (after approval), Playwright, screenshots, demo capture | Planned |

@@ -73,21 +73,21 @@ export default function Home() {
           <h2 className="font-story text-2xl font-bold text-garden-900">How the garden teaches</h2>
           <ol className="mt-5 grid gap-5 md:grid-cols-3">
             <li className="rounded-bl-lg rounded-br-3xl rounded-tl-3xl rounded-tr-lg bg-white p-5 shadow">
-              <p className="font-story text-3xl font-bold text-brass-500">1</p>
+              <p className="font-story text-3xl font-bold text-brass-700">1</p>
               <h3 className="mt-2 font-bold">Explore the reservoir</h3>
               <p className="mt-1 leading-relaxed">
                 See halves and quarters as real water in a real tank, with true water lines.
               </p>
             </li>
             <li className="rounded-bl-3xl rounded-br-lg rounded-tl-lg rounded-tr-3xl bg-white p-5 shadow">
-              <p className="font-story text-3xl font-bold text-brass-500">2</p>
+              <p className="font-story text-3xl font-bold text-brass-700">2</p>
               <h3 className="mt-2 font-bold">Decide what pours</h3>
               <p className="mt-1 leading-relaxed">
                 Choose the water the garden needs. Your reasoning picks the path — not luck.
               </p>
             </li>
             <li className="rounded-3xl rounded-tr-lg bg-white p-5 shadow">
-              <p className="font-story text-3xl font-bold text-brass-500">3</p>
+              <p className="font-story text-3xl font-bold text-brass-700">3</p>
               <h3 className="mt-2 font-bold">Watch the world answer</h3>
               <p className="mt-1 leading-relaxed">
                 Channels fill or splash over, flowers wake, and Nia explains what happened.

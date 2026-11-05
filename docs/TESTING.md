@@ -6,9 +6,9 @@
 |---|---|---|
 | `npm run lint` | Next.js ESLint | PASS, no warnings |
 | `npm run typecheck` | `tsc --noEmit`, strict | PASS |
-| `npm run test` | Vitest unit suite, 45 tests | 45/45 PASS |
+| `npm run test` | Vitest unit suite, 46 tests | 46/46 PASS |
 | `npm run build` | Production build, 6 routes + API | PASS |
-| `npm run test:e2e` | Playwright, 6 specs | 6/6 PASS |
+| `npm run test:e2e` | Playwright, 8 specs | 8/8 PASS |
 | `npm run check:no-secrets` | No tracked secrets | PASS |
 
 ## Unit coverage
@@ -32,6 +32,8 @@
   accept/reject checks.
 - `responsive.spec.ts`: no horizontal overflow on all five pages at 375px
   and 1280px.
+- `a11y.spec.ts`: full keyboard play of s1–s2 with Space/Enter activation, and
+  read-aloud listen/stop controls — both with a zero-error console budget.
 
 ## Browser verification (this session, real Chromium)
 
@@ -43,6 +45,6 @@ Screenshots in `.screenshots/` (git-ignored local evidence).
 
 ## Known gaps
 
-Single-engine (Chromium) only — no WebKit/Firefox run yet. No CI workflow yet,
-so gates are enforced manually. Keyboard-only and screen-reader passes are
-partial (skip link, roles, labels, and focus ring exist; full pass at M3).
+Single-engine (Chromium) only — no WebKit/Firefox run yet. CI runs all gates
+on push and pull requests. Screen-reader pass is still manual (keyboard flow,
+names, roles, focus indicators, and contrast are verified).

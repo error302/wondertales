@@ -60,7 +60,7 @@ export default function WorldsPage() {
             >
               <Emblem worldId={world.id} />
               <h2 className="mt-3 font-story text-xl font-bold text-garden-900">{world.name}</h2>
-              <p className="mt-1 text-sm font-bold uppercase tracking-wide text-brass-500">
+              <p className="mt-1 text-sm font-bold uppercase tracking-wide text-brass-700">
                 {world.subject}
               </p>
               <p className="mt-2 flex-1 leading-relaxed">{world.purpose}</p>
