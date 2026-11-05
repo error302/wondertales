@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# env files: never commit secrets. .env.example is the only tracked template.
+.env*
+!.env.example
+
+# logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# local verification evidence (never commit)
+.screenshots/
+
+# typescript + playwright artifacts
+*.tsbuildinfo
+test-results/
+playwright-report/
