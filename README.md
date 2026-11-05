@@ -18,6 +18,8 @@ progression, or world state.
 | M0 — Foundation (Oct 29) | Standalone repo, Next.js + TS strict + Tailwind, landing page, scenes 1–2, deterministic engine, unit tests | Done |
 | M1 — Story logic (Oct 30) | Six-scene graph, all dialogues/questions, full reducer coverage | Done |
 | M2 — Playable (Nov 5) | Full s1–s6 story wiring, all 4 questions, s4 remediation loop, on-device persistence, responsive + story-path e2e | Done |
+| M2.1 — Universe (Nov 5) | World select, guide select, grown-ups dashboard, journey e2e | Done |
+| M4-mock — Guide API (Nov 5) | Server-side WonderGuide demo endpoint: allowlist validation, daily cap, honest mock label | Done |
 | M3 — Visual polish (Nov 1) | Character bible, water animation, garden transformations, a11y pass | Planned |
 | M4 — WonderGuide (Nov 2) | Mock + Meta server provider, validation, fallbacks, toggle, rate limits | Planned |
 | M5 — Release candidate (Nov 3) | Deployment (after approval), Playwright, screenshots, demo capture | Planned |
@@ -89,11 +91,13 @@ wondertales/
 - No free-text input, no accounts, no tracking, no PII collection.
 - All water visuals use true proportional fill with accurate ½ and ¼ markers.
 
-## Limitations (M2)
+## Limitations (M2.1 + M4-mock)
 
-- One adventure (Clockwork Garden). World select, character select, and a parent
-  dashboard route are not built; the landing page carries the grown-ups summary.
-- Progress persists on-device (localStorage, schema-validated); no accounts or sync.
-- The WonderGuide API route, AI toggle, and rate limits land at M4 (mock-first;
-  no live API spend without approval). No AI provider is integrated today.
-- Screenshots live in `.screenshots/` (git-ignored); the public demo URL lands at M5.
+- One playable adventure (Clockwork Garden, in the Clockwork Kingdom). The
+  Enchanted Forest and Ocean of Discovery are honest coming-soon cards.
+- Progress, profile, guide, and settings persist on-device (localStorage,
+  schema-validated); no accounts or sync.
+- WonderGuide is a server-side demo endpoint (`mock-guide` label, allowlist
+  validation, daily cap). No AI provider is integrated; no live API spend
+  without approval.
+- Screenshots live in `.screenshots/` (git-ignored).

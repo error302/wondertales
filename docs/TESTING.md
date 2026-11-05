@@ -6,9 +6,9 @@
 |---|---|---|
 | `npm run lint` | Next.js ESLint | PASS, no warnings |
 | `npm run typecheck` | `tsc --noEmit`, strict | PASS |
-| `npm run test` | Vitest unit suite, 38 tests | 38/38 PASS |
-| `npm run build` | Production build, 3 routes | PASS |
-| `npm run test:e2e` | Playwright, 4 specs | 4/4 PASS |
+| `npm run test` | Vitest unit suite, 45 tests | 45/45 PASS |
+| `npm run build` | Production build, 6 routes + API | PASS |
+| `npm run test:e2e` | Playwright, 6 specs | 6/6 PASS |
 | `npm run check:no-secrets` | No tracked secrets | PASS |
 
 ## Unit coverage
@@ -27,15 +27,19 @@
 - `adventure.spec.ts`: full playthrough s1–s6 with a wrong answer (remediation
   branch), both s5 distributions, celebration assertions, and a zero
   console-error/pageerror budget; plus a reload-persistence test.
-- `responsive.spec.ts`: no horizontal overflow on `/` and `/adventure` at
-  375px and 1280px.
+- `journey.spec.ts`: worlds to companions to adventure with guide chip,
+  grown-ups profile save, AI toggle, WonderGuide explanation; plus API
+  accept/reject checks.
+- `responsive.spec.ts`: no horizontal overflow on all five pages at 375px
+  and 1280px.
 
 ## Browser verification (this session, real Chromium)
 
 Full story captured and visually inspected at 390×844, 768×1024, and
 1440×900: landing, dialogue, question, wrong-answer feedback, s5 pipe puzzle,
-celebration. No overflow, no clipped text, no console errors. Screenshots in
-`.screenshots/` (git-ignored local evidence).
+celebration — plus worlds, companions, grown-ups dashboard, and the
+WonderGuide panel. No overflow, no clipped text, no console errors.
+Screenshots in `.screenshots/` (git-ignored local evidence).
 
 ## Known gaps
 

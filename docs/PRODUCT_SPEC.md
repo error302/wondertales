@@ -12,12 +12,20 @@ localization means translating typed records, not rewriting UI.
 
 1. **Welcome** (`/`): identity, illustrated hero, Play action, how-it-teaches,
    grown-ups section. No sign-up, no empty states.
-2. **Story player** (`/adventure`): scene illustration and title, dialogue with
-   Milo/Nia, 3 meaningful choices per puzzle, kind feedback, progress bar,
-   celebration recap. Large touch targets (min 48px), skip link, focus ring,
-   reduced-motion respected.
-3. **Celebration**: what was learned per concept (first-try vs learned-with-help
+2. **Adventure universe** (`/worlds`): three worlds with distinct emblems,
+   subjects, and purposes. Clockwork Kingdom is playable; Forest and Ocean are
+   honest coming-soon cards, never fake buttons.
+3. **Guide select** (`/companions`): pick Milo or Nia as your traveling guide.
+   Shown in the adventure progress bar and celebration; stored on-device.
+4. **Story player** (`/adventure`): scene illustration and title, dialogue with
+   Milo/Nia, 3 meaningful choices per puzzle, kind feedback, progress bar with
+   guide chip, opt-in WonderGuide preview panel, celebration recap. Large touch
+   targets (min 48px), skip link, focus ring, reduced-motion respected.
+5. **Celebration**: what was learned per concept (first-try vs learned-with-help
    reported separately), puzzles solved, tries, achievements, replay, next step.
+6. **Grown-ups dashboard** (`/grown-ups`): child profile (name, age band),
+   learning progress per concept, WonderGuide preview toggle (default off),
+   privacy notes, remove-all-data. Everything stays in the browser.
 
 ## The adventure (complete, playable start to finish)
 
@@ -36,6 +44,5 @@ and the child retries. No timers, no lives, no loss states.
 
 ## Not built (honest gaps)
 
-World select, character select, parent dashboard route, narration audio,
-additional adventures, AI companion. See README Limitations and the roadmap in
-HACKATHON_SUBMISSION.md.
+Narration audio, Forest and Ocean adventures, live AI provider. See README
+Limitations and the roadmap in HACKATHON_SUBMISSION.md.

@@ -33,7 +33,7 @@ export default function Home() {
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
               <Link
-                href="/adventure"
+                href="/worlds"
                 className="inline-flex min-h-[56px] items-center rounded-full bg-fox px-8 text-lg font-bold text-white hover:bg-fox-deep"
               >
                 Play the adventure
@@ -116,6 +116,12 @@ export default function Home() {
               <strong>Kind by design.</strong> Wrong answers bloom into explanations, never shame.
             </li>
           </ul>
+          <Link
+            href="/grown-ups"
+            className="mt-5 inline-flex min-h-[48px] items-center rounded-full bg-white px-6 font-bold text-garden-800 hover:bg-garden-50"
+          >
+            Open the grown-ups dashboard
+          </Link>
         </section>
 
         <footer className="mt-10 text-sm font-semibold text-garden-800">

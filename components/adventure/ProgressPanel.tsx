@@ -9,9 +9,11 @@ const FLAG_LABELS: Record<string, string> = {
 export function ProgressPanel({
   session,
   sceneTitle,
+  companion = null,
 }: {
   session: StorySession;
   sceneTitle: string;
+  companion?: string | null;
 }) {
   const tries = session.attempts.length;
   return (
@@ -20,6 +22,9 @@ export function ProgressPanel({
       className="flex flex-wrap items-center gap-2 rounded-2xl bg-garden-900 px-4 py-3 text-sm text-garden-50"
     >
       <span className="font-bold">{sceneTitle}</span>
+      {companion && (
+        <span className="rounded-full bg-turtle px-3 py-1 font-semibold">Guide: {companion}</span>
+      )}
       <span aria-hidden="true" className="opacity-50">
         •
       </span>

@@ -12,6 +12,7 @@ import { DIALOGUE } from '../../content/clockwork-garden/dialogue';
 import { AUTHORED_HINTS, GENERIC_RETRY_HINT } from '../../content/clockwork-garden/hints';
 import { QUESTIONS, REQUIRED_QUESTION_IDS, getQuestion } from '../../content/clockwork-garden/questions';
 import { getScene } from '../../content/clockwork-garden/scenes';
+import { getAiEnabled, getCompanion } from '../../lib/client/storage';
 import { hasCompletedQuestions, masteryForConcept, type MasteryLevel } from '../../lib/engine/mastery';
 import { createInitialSession, resolveChoice, type FeedbackId } from '../../lib/engine/reducer';
 import { advanceScene, gotoScene, sceneAfterAnswer } from '../../lib/engine/transitions';
@@ -126,13 +127,24 @@ export default function AdventurePage() {
   const [phase, setPhase] = useState<Phase>('dialogue');
   const [questionId, setQuestionId] = useState<string | null>(null);
   const [lastAnswer, setLastAnswer] = useState<LastAnswer | null>(null);
+  const [companion, setCompanionState] = useState<string | null>(null);
+  const [aiEnabled, setAiEnabledState] = useState(false);
+  const [guideStatus, setGuideStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
+  const [guideText, setGuideText] = useState('');
   const loadedStored = useRef(false);
 
   // Load stored progress after mount so the server and client render the same first paint.
   useEffect(() => {
     setSession(loadSession());
+    setCompanionState(getCompanion());
+    setAiEnabledState(getAiEnabled());
     loadedStored.current = true;
   }, []);
+
+  useEffect(() => {
+    setGuideStatus('idle');
+    setGuideText('');
+  }, [lastAnswer]);
 
   useEffect(() => {
     if (!loadedStored.current) {
@@ -227,6 +239,47 @@ export default function AdventurePage() {
     setPhase('dialogue');
   };
 
+  const handleAskGuide = async () => {
+    if (!answeredQuestion || guideStatus === 'loading') {
+      return;
+    }
+    setGuideStatus('loading');
+    try {
+      const attemptCount = session.attempts.filter(
+        (attempt) => attempt.questionId === answeredQuestion.id,
+      ).length;
+      const misconceptionId =
+        lastAnswer &&
+        lastAnswer.feedbackId !== 'correct' &&
+        lastAnswer.feedbackId !== 'incorrect' &&
+        lastAnswer.feedbackId !== 'duplicate_ignored'
+          ? lastAnswer.feedbackId
+          : null;
+      const response = await fetch('/api/wonderguide', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          conceptId: answeredQuestion.conceptId,
+          misconceptionId,
+          attemptCount: Math.max(1, attemptCount),
+        }),
+      });
+      if (!response.ok) {
+        setGuideStatus('error');
+        return;
+      }
+      const data = (await response.json()) as { explanation?: unknown };
+      if (typeof data.explanation !== 'string' || data.explanation.length === 0) {
+        setGuideStatus('error');
+        return;
+      }
+      setGuideText(data.explanation.slice(0, 600));
+      setGuideStatus('done');
+    } catch {
+      setGuideStatus('error');
+    }
+  };
+
   const handleStartOver = () => {
     if (window.confirm('Start the adventure over? Your garden progress will reset.')) {
       try {
@@ -248,7 +301,7 @@ export default function AdventurePage() {
     return (
       <StoryStage eyebrow="Adventure complete" title="The Clockwork Garden blooms!">
         <div className="space-y-6">
-          <ProgressPanel session={session} sceneTitle="Celebration" />
+          <ProgressPanel session={session} sceneTitle="Celebration" companion={companion} />
           <section
             aria-label="What you learned"
             className="rounded-3xl bg-white p-5 shadow-md sm:p-6"
@@ -317,7 +370,7 @@ export default function AdventurePage() {
   return (
     <StoryStage eyebrow={`Scene ${scene.id} · The Clockwork Garden`} title={scene.title}>
       <div className="space-y-6">
-        <ProgressPanel session={session} sceneTitle={scene.title} />
+        <ProgressPanel session={session} sceneTitle={scene.title} companion={companion} />
         {phase === 'dialogue' && (
           <DialogueBox
             key={scene.id}
@@ -380,6 +433,35 @@ export default function AdventurePage() {
                 : { label: 'Try again', onClick: handleWrongContinue }
             }
           />
+        )}
+        {phase === 'feedback' && answeredQuestion && wrongCopy && aiEnabled && (
+          <section
+            aria-label="WonderGuide preview"
+            className="rounded-3xl bg-white p-5 shadow-md sm:p-6"
+          >
+            <h2 className="font-story text-xl font-bold text-garden-900">WonderGuide preview</h2>
+            <p className="mt-1 text-sm font-semibold text-garden-700">
+              Demo explanations from this site — no AI connected.
+            </p>
+            {guideStatus === 'done' ? (
+              <p role="status" className="mt-3 text-lg leading-relaxed">
+                {guideText}
+              </p>
+            ) : guideStatus === 'error' ? (
+              <p role="status" className="mt-3 text-lg leading-relaxed">
+                WonderGuide is resting right now — the hint above still shows the way.
+              </p>
+            ) : (
+              <button
+                type="button"
+                onClick={handleAskGuide}
+                disabled={guideStatus === 'loading'}
+                className="mt-3 inline-flex min-h-[48px] items-center rounded-full bg-brass-500 px-6 font-bold text-white hover:bg-brass-400 disabled:opacity-60"
+              >
+                {guideStatus === 'loading' ? 'Thinking...' : 'Ask WonderGuide'}
+              </button>
+            )}
+          </section>
         )}
       </div>
     </StoryStage>

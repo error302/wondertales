@@ -6,15 +6,19 @@ dependencies beyond Next/React. No database, no backend services, no tracking.
 ## Layers
 
 ```text
-app/            routes: / (landing), /adventure (story player)
+app/            routes: / (landing), /worlds, /companions, /adventure,
+                /grown-ups, /api/wonderguide (server hint endpoint)
 components/     adventure UI (ChoicePanel, DialogueBox, FeedbackPanel,
                 ProgressPanel, StoryStage, WaterPuzzle) + Milo/Nia SVG art
-content/        typed authored data: scenes, dialogue, questions, hints, visuals
+content/        typed authored data: worlds, scenes, dialogue, questions, hints
 lib/engine/     pure logic: types, rationals, reducer, transitions,
                 mastery, validation, water-visuals
+lib/client/     typed on-device storage (profile, guide, world, AI toggle)
+lib/server/     WonderGuide request validation, demo explainer, rate limits
 lib/config/     server-only env guard (throws in the browser)
-tests/unit/     Vitest suite (38 tests)
-tests/e2e/      Playwright: responsive overflow + full story playthrough
+tests/unit/     Vitest suite (45 tests)
+tests/e2e/      Playwright: responsive overflow, full story playthrough,
+                worlds-to-guide journey, API accept/reject
 scripts/        check-no-secrets gate
 ```
 
