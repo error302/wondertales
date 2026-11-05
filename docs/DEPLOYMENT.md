@@ -1,6 +1,18 @@
 # Deployment
 
-## Current state: local only. No public URL yet.
+## Current state: live on Vercel
+
+- **Live demo:** https://wondertales-two.vercel.app
+- Deployed Nov 5, 2026 via `vercel --prod --yes` (project
+  `demitriosojwang-4569s-projects/wondertales`, fully static, no env vars).
+- Verified live in Chromium the same day: landing, s1–s2 play, wrong answer
+  with kind feedback, retry, correct answer — zero console messages.
+  Screenshots: `.screenshots/prod-landing.png`, `.screenshots/prod-feedback.png`.
+
+Note: Vercel could not auto-link the GitHub repo (the Vercel login lacks repo
+access), so pushes do not auto-deploy. Redeploy with
+`vercel --prod --yes` from `wondertales/`, or connect the repo in the Vercel
+dashboard (needs a login with repo access) to enable auto-deploys.
 
 ## Reproduce locally
 

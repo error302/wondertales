@@ -48,7 +48,8 @@ specified in AI_INTEGRATION.md.
 ## Links
 
 - Repo: https://github.com/error302/wondertales
-- Demo URL: pending deployment approval (local: `npm run dev`, http://localhost:3000)
+- Demo URL: https://wondertales-two.vercel.app (live, verified Nov 5, 2026;
+  local fallback: `npm run dev`, http://localhost:3000)
 
 ## Demo script (3 minutes)
 
